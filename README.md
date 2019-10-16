@@ -4,19 +4,35 @@
 
 Container image for development of Clojure apps & CI build.
 
-# Running development environment inside a container
+# Running local development environment
 
-From the root directory of your Clojure project start remote REPL:
-
-```
-docker run --rm -it -p 5000:5000 -v ~/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app shellbro/devbox-clojure
-```
-
-By default, remote REPL listens on port 30123. You can customize this port
-number by passing command line arguments and remembering to expose the new port:
+From the root directory of your Clojure project start remote REPL inside
+an isolated container:
 
 ```
-docker run --rm -it -p 5000:5000 -v ~/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app shellbro/devbox-clojure :port 5000
+docker run --rm -it -p 2000:2000 -v ~/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app shellbro/devbox-clojure
 ```
 
-Once nREPL for your project
+You can customize the port number over which nREPL is available on the localhost
+by exposing it on another port. For example, to change the port number from 2000
+to 2001 run:
+
+```
+docker run --rm -it -p 2000:2001 -v ~/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app shellbro/devbox-clojure
+```
+
+Once nREPL for your project is running you can connect to it from `CIDER`:
+
+```
+M-x cider-connect
+> localhost
+> 2000
+```
+
+# CI/CD build stage
+
+Example Dockerfile
+
+```
+TODO
+```
