@@ -9,4 +9,4 @@ RUN groupadd -g $GID $LOGIN && useradd -u $UID -g $GID -m $LOGIN &&\
 USER $LOGIN
 WORKDIR /usr/local/src/app
 
-ENTRYPOINT ["lein", "repl", ":start", ":host", "0.0.0.0" ":port", "2000"]
+ENTRYPOINT ["lein", "repl", ":start", ":host", "0.0.0.0", ":port", "2000"]
