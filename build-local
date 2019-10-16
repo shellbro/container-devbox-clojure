@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+/usr/bin/docker build --pull --tag=localhost/shellbro/devbox-clojure:latest .
