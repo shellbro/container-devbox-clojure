@@ -31,8 +31,35 @@ M-x cider-connect
 
 # CI/CD build stage
 
-Example Dockerfile
+Example Dockerfile:
 
 ```
-TODO
+FROM shellbro/devbox-clojure as builder
+
+ARG LOGIN=app-user
+
+COPY --chown=$LOGIN:$LOGIN project.clj /usr/local/src/app
+RUN lein deps
+COPY --chown=$LOGIN:$LOGIN . /usr/local/src/app
+RUN mv "$(lein uberjar | sed -n 's/^Created \(.*standalone\.jar\)/\1/p')"\
+    app-standalone.jar
+
+###
+
+FROM openjdk:11-jre
+
+ARG UID=1000
+ARG GID=1000
+ARG LOGIN=app-user
+
+RUN groupadd -g $GID $LOGIN && useradd -u $UID -g $GID -m $LOGIN
+COPY --from=builder --chown=$LOGIN:$LOGIN /usr/local/src/app/app-standalone.jar \
+     /home/$LOGIN
+
+USER $LOGIN
+WORKDIR /home/$LOGIN
+
+EXPOSE 3000
+
+ENTRYPOINT ["java", "-jar", "app-standalone.jar"]
 ```
