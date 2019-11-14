@@ -11,4 +11,4 @@ WORKDIR /usr/local/src/app
 
 EXPOSE 2000
 
-ENTRYPOINT ["lein", "update-in", ":dependencies", "conj", "[cider/cider-nrepl \"0.22.4\"]", "--", "repl", ":start", ":host", "0.0.0.0", ":port", "2000"]
+ENTRYPOINT ["lein", "update-in", ":dependencies", "conj", "[nrepl \"0.6.0\"]", "--", "update-in", ":plugins", "conj", "[cider/cider-nrepl \"0.22.4\"]", "--", "repl", ":start", ":host", "0.0.0.0", ":port", "2000"]
