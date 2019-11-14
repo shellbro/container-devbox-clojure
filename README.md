@@ -6,8 +6,8 @@ Container image for development of Clojure apps & CI build.
 
 # Running local development environment
 
-From the root directory of your Clojure project start remote REPL inside
-an isolated container:
+From the root directory of your Clojure project start standalone REPL inside
+a container:
 
 ```
 docker run --rm -it -p 2000:2000 -v ~/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app shellbro/devbox-clojure
