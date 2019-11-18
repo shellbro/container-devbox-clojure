@@ -6,6 +6,7 @@ ARG LOGIN=app-user
 
 RUN groupadd -g $GID $LOGIN && useradd -u $UID -g $GID -m $LOGIN &&\
     mkdir /usr/local/src/app && chown $LOGIN:$LOGIN /usr/local/src/app
+
 USER $LOGIN
 WORKDIR /usr/local/src/app
 
