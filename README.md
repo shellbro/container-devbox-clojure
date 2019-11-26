@@ -59,7 +59,5 @@ COPY --from=builder --chown=$LOGIN:$LOGIN /usr/local/src/app/app-standalone.jar 
 USER $LOGIN
 WORKDIR /home/$LOGIN
 
-EXPOSE 3000
-
 ENTRYPOINT ["java", "-jar", "app-standalone.jar"]
 ```
