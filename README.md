@@ -18,7 +18,7 @@ by exposing it on another port. For example, to change the port number from 2000
 to 2001 run:
 
 ```
-$ docker run --rm -it --detach-keys=ctrl-@ -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2000:2001 shellbro/devbox-clojure
+$ docker run --rm -it --detach-keys=ctrl-@ -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2001:2000 shellbro/devbox-clojure
 ```
 
 Once nREPL for your project is running you can connect to it from `CIDER`:
