@@ -21,7 +21,7 @@ from inside IDE) run:
 $ docker run --rm -dit -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2000:2000 shellbro/devbox-clojure
 ```
 
-You can customize the port number over which nREPL is available on the localhost
+You can customize a port number over which nREPL is available on the localhost
 by exposing it on another port. For example, to change the port number from 2000
 to 2001 run:
 
