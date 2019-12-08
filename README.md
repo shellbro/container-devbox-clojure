@@ -7,10 +7,18 @@ Container image for development of Clojure apps & CI build.
 # Running local development environment
 
 From the root directory of your Clojure project start standalone REPL inside
-a container:
+a container. If you want to stay attached to your REPL from a terminal window
+run:
 
 ```
-$ docker run --rm -it --detach-keys=ctrl-@ -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2000:2000 shellbro/devbox-clojure
+$ docker run --rm --detach-keys=ctrl-@ -it -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2000:2000 shellbro/devbox-clojure
+```
+
+If you prefer to spare terminal window and detach (thus using REPL only
+from inside IDE) run:
+
+```
+$ docker run --rm -dit -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2000:2000 shellbro/devbox-clojure
 ```
 
 You can customize the port number over which nREPL is available on the localhost
@@ -18,7 +26,7 @@ by exposing it on another port. For example, to change the port number from 2000
 to 2001 run:
 
 ```
-$ docker run --rm -it --detach-keys=ctrl-@ -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2001:2000 shellbro/devbox-clojure
+$ docker run --rm -dit -v $HOME/.m2:/home/app-user/.m2 -v $PWD:/usr/local/src/app -p 2001:2000 shellbro/devbox-clojure
 ```
 
 Once nREPL for your project is running you can connect to it from `CIDER`:
@@ -26,7 +34,7 @@ Once nREPL for your project is running you can connect to it from `CIDER`:
 ```
 M-x cider-connect
 > localhost
-> 2000
+> [PORT_NUMBER]
 ```
 
 # CI/CD build stage
@@ -58,6 +66,8 @@ COPY --from=builder --chown=$LOGIN:$LOGIN /usr/local/src/app/app-standalone.jar 
 
 USER $LOGIN
 WORKDIR /home/$LOGIN
+
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app-standalone.jar"]
 ```
