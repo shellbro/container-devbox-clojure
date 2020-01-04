@@ -10,6 +10,5 @@ RUN groupadd -g $GID $LOGIN && useradd -u $UID -g $GID -m $LOGIN &&\
 USER $LOGIN
 WORKDIR /usr/local/src/app
 
-EXPOSE 2000
-
-ENTRYPOINT ["lein", "update-in", ":plugins", "conj", "[cider/cider-nrepl \"0.22.4\"]", "--", "repl", ":start", ":host", "0.0.0.0", ":port", "2000"]
+ENTRYPOINT ["lein", "update-in", ":plugins", "conj", "[cider/cider-nrepl \"0.22.4\"]", "--", "repl", ":start"]
+CMD [":host", "0.0.0.0", ":port", "2000"]
