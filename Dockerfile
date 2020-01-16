@@ -11,4 +11,3 @@ USER $LOGIN
 WORKDIR /usr/local/src/app
 
 ENTRYPOINT ["lein", "update-in", ":plugins", "conj", "[cider/cider-nrepl \"0.22.4\"]", "--", "repl", ":start"]
-CMD [":host", "0.0.0.0", ":port", "2000"]
