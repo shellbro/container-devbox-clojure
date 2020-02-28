@@ -68,7 +68,7 @@ M-x cider-connect
 > PORT_NUMBER
 ```
 
-# Build
+# Build an app image
 
 ```
 FROM shellbro/devbox-clojure as builder
