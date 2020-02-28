@@ -11,4 +11,4 @@ USER app-user
 WORKDIR /usr/local/src/app
 
 ENTRYPOINT ["lein", "update-in", ":plugins", "conj",\
-            "[cider/cider-nrepl \"0.22.6\"]", "--", "repl", ":start"]
+            "[cider/cider-nrepl \"0.24.0\"]", "--", "repl", ":start"]
