@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+readonly repo=shellbro/devbox-clojure
+readonly dockerhub_tag="$(cat VERSION)-$(date +%s)"
+readonly github_tag="v$tag"
+
+docker pull "$repo:latest"
+docker tag "$repo:latest" "$repo:$dockerhub_tag"
+docker push "$repo:$dockerhub_tag"
+
+git pull origin master
+git tag "$github_tag" || true
+git push origin "$github_tag"
