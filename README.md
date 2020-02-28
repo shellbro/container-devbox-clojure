@@ -25,9 +25,9 @@ run:
 
 ```
 $ docker run --rm --detach-keys=ctrl-@ -it\
-  -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
-  -p 127.0.0.1:1337:1337\
-  shellbro/devbox-clojure :host 0.0.0.0 :port 1337
+         -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
+         -p 127.0.0.1:1337:1337\
+         shellbro/devbox-clojure :host 0.0.0.0 :port 1337
 ```
 
 If you prefer to spare terminal window and detach (thus using REPL only
@@ -35,9 +35,9 @@ from inside IDE) run:
 
 ```
 $ docker run --rm --detach-keys=ctrl-@ -dit\
-  -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
-  -p 127.0.0.1:1337:1337\
-  shellbro/devbox-clojure :host 0.0.0.0 :port 1337
+         -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
+         -p 127.0.0.1:1337:1337\
+         shellbro/devbox-clojure :host 0.0.0.0 :port 1337
 ```
 
 You can customize a port number over which nREPL is available on the localhost
@@ -46,18 +46,18 @@ to 1338 run:
 
 ```
 $ docker run --rm --detach-keys=ctrl-@ -dit\
-  -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
-  -p 127.0.0.1:1338:1338\
-  shellbro/devbox-clojure :host 0.0.0.0 :port 1338
+         -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
+         -p 127.0.0.1:1338:1338\
+         shellbro/devbox-clojure :host 0.0.0.0 :port 1338
 ```
 
 or
 
 ```
 $ docker run --rm --detach-keys=ctrl-@ -dit\
-  -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
-  --network=host\
-  shellbro/devbox-clojure :port 1338
+         -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
+         --network=host\
+         shellbro/devbox-clojure :port 1338
 ```
 
 Once nREPL for your project is running you can connect to it from `CIDER`:
