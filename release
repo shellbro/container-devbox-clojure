@@ -5,13 +5,12 @@ set -o pipefail
 set -o nounset
 
 readonly repo=shellbro/devbox-clojure
-readonly dockerhub_tag="$(cat VERSION)-$(date +%s)"
-readonly github_tag="v$tag"
+readonly tag="$(cat VERSION)-$(date +%s)"
 
 docker pull "$repo:latest"
-docker tag "$repo:latest" "$repo:$dockerhub_tag"
-docker push "$repo:$dockerhub_tag"
+docker tag "$repo:latest" "$repo:$tag"
+docker push "$repo:$tag"
 
 git pull origin master
-git tag "$github_tag" || true
-git push origin "$github_tag"
+git tag "$tag" || true
+git push origin "$tag"
