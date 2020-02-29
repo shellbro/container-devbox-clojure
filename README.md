@@ -13,7 +13,7 @@ function repl {
   docker run --rm --detach-keys=ctrl-@ -it\
          -v "$HOME/.m2:/home/app-user/.m2" --entrypoint=lein\
          shellbro/devbox-clojure update-in :dependencies into "[$1]" --\
-         repl :start
+         repl
 }
 ```
 
