@@ -4,7 +4,7 @@
 
 Non-root container image for Clojure development.
 
-# Ad-hoc containerized Clojure REPL
+## Ad-hoc containerized Clojure REPL
 
 Add the following function to your `.bashrc` file:
 
@@ -17,7 +17,7 @@ function repl {
 }
 ```
 
-# Develop inside a container
+## Develop inside a container
 
 From the root directory of your Clojure project start standalone REPL inside
 a container. If you want to stay attached to your REPL from a terminal window
@@ -68,7 +68,7 @@ M-x cider-connect
 > PORT_NUMBER
 ```
 
-# Build an app image
+## Build an app image
 
 ```
 FROM shellbro/devbox-clojure as builder
