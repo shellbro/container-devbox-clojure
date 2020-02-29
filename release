@@ -12,5 +12,5 @@ docker tag "$repo:latest" "$repo:$tag"
 docker push "$repo:$tag"
 
 git pull origin master
-git tag "$tag" || true
+git tag "$tag"
 git push origin "$tag"
