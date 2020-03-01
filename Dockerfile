@@ -1,7 +1,7 @@
 FROM clojure:openjdk-11-lein-2.9.1-slim-buster
 
-ARG HOST_UID=999
-ARG HOST_GID=999
+ARG HOST_UID=1001
+ARG HOST_GID=1001
 
 RUN groupadd -g $HOST_GID app-user &&\
     useradd -u $HOST_UID -g $HOST_GID -m app-user &&\
