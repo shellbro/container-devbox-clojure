@@ -25,7 +25,7 @@ a container. If you want to stay attached to your REPL from a terminal window
 run:
 
 ```
-$ docker run --rm -it --detach-keys=ctrl-@\
+$ docker run --name=app --rm -it --detach-keys=ctrl-@\
          -p 127.0.0.1:1337:1337\
          -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
          shellbro/devbox-clojure :host 0.0.0.0 :port 1337
@@ -35,7 +35,7 @@ If you prefer to spare terminal window and detach (thus using REPL only
 from inside IDE) add `-d` option:
 
 ```
-$ docker run --rm -dit --detach-keys=ctrl-@\
+$ docker run --name=app --rm -dit --detach-keys=ctrl-@\
          -p 127.0.0.1:1337:1337\
          -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
          shellbro/devbox-clojure :host 0.0.0.0 :port 1337
@@ -46,7 +46,7 @@ by exposing it on another port. For example, to change the port number from 1337
 to 1338 run:
 
 ```
-$ docker run --rm -dit --detach-keys=ctrl-@\
+$ docker run --name=app --rm -dit --detach-keys=ctrl-@\
          -p 127.0.0.1:1338:1338\
          -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
          shellbro/devbox-clojure :host 0.0.0.0 :port 1338
@@ -55,7 +55,7 @@ $ docker run --rm -dit --detach-keys=ctrl-@\
 or
 
 ```
-$ docker run --rm -dit --detach-keys=ctrl-@\
+$ docker run --name=app --rm -dit --detach-keys=ctrl-@\
          --network=host\
          -v "$HOME/.m2:/home/app-user/.m2" -v "$PWD:/usr/local/src/app"\
          shellbro/devbox-clojure :port 1338
