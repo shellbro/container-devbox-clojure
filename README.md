@@ -82,8 +82,8 @@ RUN mv "$(lein uberjar | sed -n 's/^Created \(.*standalone\.jar\)/\1/p')"\
 
 FROM openjdk:11-jre
 
-ARG HOST_UID=999
-ARG HOST_GID=999
+ARG HOST_UID=1001
+ARG HOST_GID=1001
 
 RUN groupadd -g $HOST_GID app-user &&\
     useradd -u $HOST_UID -g $HOST_GID -m app-user
@@ -93,5 +93,5 @@ COPY --from=builder --chown=app-user:app-user\
 USER app-user
 WORKDIR /home/app-user
 
-ENTRYPOINT ["java", "-jar", "app-standalone.jar"]
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=50.0", "-jar", "app-standalone.jar"]
 ```
